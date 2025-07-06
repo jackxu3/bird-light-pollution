@@ -4,21 +4,21 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I am Jack Xu, a thirteen year old who loves birds! My account -&gt; https://www.github.com/jackxu3 Email -&gt; bluebird.jack.xu@gmail.com\nMy project is about how light pollution affects migratory birds, such as gulls, by reducing rest time and increasing flight speed. Link -&gt; https://github.com/jackxu3/bird-light-pollution\nThis project was created as a part of Kane’s Data Science Bootcamp. https://bootcamp.davidkane.info/"
+    "text": "I am Jack Xu, a thirteen year old who loves birds! My account -&gt; https://www.github.com/jackxu3 Email -&gt; bluebird.jack.xu@gmail.com\nMy project is about how light pollution affects migratory birds, such as gulls, by reducing rest time and increasing flight speed. Link -&gt; https://github.com/jackxu3/bird-light-pollution\nThis project was created as a part of Kane’s Free Data Science Bootcamp."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Analyzing Light Pollution and Bird Migration",
     "section": "",
-    "text": "filler"
+    "text": "Light pollution affects rest and flight behavior of migratory birds. I gathered data from Kaggle showing three lesser black-backed gulls’ flight paths in 2013 and 2014. The dataset from Globe at Night – Sky Brightness Monitoring Network in 2023 shows light pollution levels. Using this data, we seek to understand the relationship between rest duration and flight speed with light pollution levels. More light pollution causes less time for bird rest and higher flight speeds, showing hyperactivity and disorientation."
   },
   {
     "objectID": "index.html#summary",
     "href": "index.html#summary",
     "title": "Analyzing Light Pollution and Bird Migration",
     "section": "",
-    "text": "filler"
+    "text": "Light pollution affects rest and flight behavior of migratory birds. I gathered data from Kaggle showing three lesser black-backed gulls’ flight paths in 2013 and 2014. The dataset from Globe at Night – Sky Brightness Monitoring Network in 2023 shows light pollution levels. Using this data, we seek to understand the relationship between rest duration and flight speed with light pollution levels. More light pollution causes less time for bird rest and higher flight speeds, showing hyperactivity and disorientation."
   },
   {
     "objectID": "index.html#plot",
