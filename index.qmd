@@ -1,0 +1,16 @@
+---
+title: "Analyzing Light Pollution and Bird Migration"
+author: "Jack Xu"
+execute:
+  echo: FALSE
+  message: FALSE
+  warning: FALSE
+---
+
+## Summary
+filler
+
+## Plot
+```{r}
+
+```

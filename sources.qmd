@@ -1,0 +1,11 @@
+---
+title: "Sources"
+author: "Jack Xu"
+format: html
+---
+
+I got the bird migration dataset from Kaggle and the light pollution dataset from Globe at Night.
+
+I cleaned the downloaded data by removing unwanted columns and kept the Latitude, Longitude, and LimitingMag columns.
+
+I removed rows before with no value by piping to na.omit().

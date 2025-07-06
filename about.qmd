@@ -1,0 +1,14 @@
+---
+title: "About"
+author: "Jack Xu"
+---
+
+I am Jack Xu, a thirteen year old who loves birds!
+My account -> <https://www.github.com/jackxu3>
+Email -> <bluebird.jack.xu@gmail.com>
+
+My project is about how light pollution affects migratory birds, such as gulls, by reducing rest time and increasing flight speed.
+Link -> <https://github.com/jackxu3/bird-light-pollution>
+
+This project was created as a part of Kane’s Data Science Bootcamp.
+<https://bootcamp.davidkane.info/>
