@@ -8,7 +8,7 @@ My GitHub account: <https://www.github.com/jackxu3>
 
 My email: <bluebird.jack.xu@gmail.com>
 
-My project is about how light pollution affects migratory birds, such as gulls, by reducing rest time and increasing flight speed.
+My project is about how light pollution affects migratory birds, such as gulls, by reducing rest time and increasing flight speed. The underlying R code of the plots were written by AI tools.
 
 GitHub repository link: <https://github.com/jackxu3/bird-light-pollution>
 

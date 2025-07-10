@@ -7,36 +7,38 @@ execute:
 
 ## Plots
 ```{r}
+# tidyverse already has lubridate and ggplot2; installations of lubridate and ggplot2 are unneccesary
 library(tidyverse)
-library(lubridate)
+# library(lubridate)
 library(RANN)
-library(ggplot2)
+# library(ggplot2)
 library(data.table)
 ```
 
 ```{r}
-#Load datasets
-bird_data <- read_csv("data/bird_migration.csv")
+# Load datasets
+# Added the data directory since files are now in this directory
+bird_data <- read_csv("data/bird_migration.csv") 
 light_data <- read_csv("data/GaN2023.csv")
 
-#Clean LimitingMag: treat -9999 as 7
+# Clean LimitingMag: treat -9999 as 7
 light_data <- light_data %>%
   mutate(LimitingMag = ifelse(LimitingMag == -9999, 7, LimitingMag))
 
-#Convert bird date_time and extract date
+# Convert bird date_time and extract date
 bird_data <- bird_data %>%
   mutate(date_time = ymd_hms(date_time),
          date = as.Date(date_time))
 
-#Assign nearest light value using RANN
+# Assign nearest light value using RANN
 bird_coords <- bird_data %>% select(latitude, longitude) %>% as.matrix()
 light_coords <- light_data %>% select(Latitude, Longitude) %>% as.matrix()
 nn <- nn2(light_coords, query = bird_coords, k = 1)
 nearest_indices <- nn$nn.idx[, 1]
 bird_data$LimitingMag <- light_data$LimitingMag[nearest_indices]
 
-#Analyze rest and flight speed
-#Associate each bird GPS record with the nearest LimitingMag from the light pollution dataset and aggregate the rest and speed metrics per bird per day.
+# Analyze rest and flight speed
+# Associate each bird GPS record with the nearest LimitingMag from the light pollution dataset and aggregate the rest and speed metrics per bird per day.
 data_dt <- as.data.table(bird_data)
 rest_summary <- data_dt[, .(
   rest_minutes = sum(speed_2d < 1, na.rm = TRUE) * 15,  # Assuming 15-min intervals
@@ -44,26 +46,28 @@ rest_summary <- data_dt[, .(
   avg_LimitingMag = mean(LimitingMag, na.rm = TRUE)
 ), by = .(bird_name, date)]
 
-#Plot: Light Pollution vs Rest Duration
+# Plot: Light Pollution vs Rest Duration
+# Removed scale_x_reverse() from both plots to prevent confusion
+# Changed LimitingMag to Light Pollution Intensity
 ggplot(rest_summary, aes(x = avg_LimitingMag, y = rest_minutes)) +
   geom_point(alpha = 0.6, color = "steelblue") +
   geom_smooth(method = "lm", se = FALSE, color = "darkblue") +
-  scale_x_reverse() +
+  # scale_x_reverse() +
   labs(title = "Light Pollution vs Bird Rest Duration",
-       x = "LimitingMag (lower = more light)",
+       x = "Light Pollution Intensity (lower = more light)",
        y = "Rest Duration (minutes)") +
   theme_minimal()
 
-#Plot: Light Pollution vs Flight Speed
+# Plot: Light Pollution vs Flight Speed
 ggplot(rest_summary, aes(x = avg_LimitingMag, y = avg_speed)) +
   geom_point(alpha = 0.6, color = "tomato") +
   geom_smooth(method = "lm", se = FALSE, color = "darkgreen") +
-  scale_x_reverse() +
+  # scale_x_reverse() +
   labs(title = "Light Pollution vs Bird Flight Speed",
-       x = "LimitingMag (lower = more light)",
+       x = "Light Pollution Intensity (lower = more light)",
        y = "Average Flight Speed (m/s)") +
   theme_minimal()
 ```
 
 ## Summary
-Light pollution affects rest and flight behavior of migratory birds. I gathered data from Kaggle showing three lesser black-backed gulls' flight paths in 2013 and 2014. The dataset from Globe at Night – Sky Brightness Monitoring Network in 2023 shows light pollution levels. Using this data, we seek to understand the relationship between rest duration and flight speed with light pollution levels. More light pollution causes less time for bird rest and higher flight speeds, showing hyperactivity and disorientation.
+Light pollution affects rest and flight behavior of migratory birds. I gathered data from Kaggle showing three lesser black-backed gulls' flight paths in 2013 and 2014. The dataset from Globe at Night – Sky Brightness Monitoring Network in 2023 shows light pollution levels. Using this data, we seek to understand the relationship between rest times and flight speeds of birds with light pollution levels. This data shows that more light pollution causes less bird rest times and higher flight speeds, which causes disorientation.
