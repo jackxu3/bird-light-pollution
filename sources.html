@@ -138,8 +138,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>I got the bird migration dataset from Kaggle and the light pollution dataset from Globe at Night.</p>
-<p>I cleaned the downloaded data by removing unwanted columns and kept the Latitude, Longitude, and LimitingMag columns.</p>
-<p>I removed rows before with no value by piping to na.omit().</p>
+<p>I cleaned the downloaded data by keeping the Latitude, Longitude, and LimitingMag columns and removing the rest of the columns.</p>
+<p>I did not remove rows by changing the dataset itself, but the argument na.rm in the assignation to rest_summary ignores rows containing empty values.</p>
 
 
 
