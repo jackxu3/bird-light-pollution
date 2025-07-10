@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: bdc940ab-de62-4113-9d68-ba970b439542
+      url: https://jackxu3.quarto.pub/analyzing-light-pollution-and-bird-migration
